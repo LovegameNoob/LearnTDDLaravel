@@ -21,8 +21,8 @@ $factory->define(User::class, function (Faker $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'name' => $faker->name(),
+        'email' => $faker->unique()->safeEmail(),
         'email_verified_at' => now(),
         'password' => $password ?: $password = bcrypt('123456'),//'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
@@ -34,8 +34,8 @@ $factory->define(App\Thread::class,function ($faker){
         'user_id' => function () {
             return factory('App\User')->create()->id;
         },
-        'title' => $faker->sentence,
-        'body' => $faker->paragraph,
+        'title' => $faker->sentence(),
+        'body' => $faker->paragraph(),
     ];
 });
 
@@ -47,6 +47,6 @@ $factory->define(App\Reply::class,function ($faker){
         'user_id' => function () {
             return factory('App\User')->create()->id;
         },
-        'body' => $faker->paragraph,
+        'body' => $faker->paragraph(),
     ];
 });
